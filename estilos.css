@@ -1,0 +1,1032 @@
+/* =====================================================
+   MUNDO CELULAR - Estilos
+   Índice:
+   1. Colores y base         6. Catálogo y tarjetas
+   2. Fondo con luces        7. Visor 360°
+   3. Encabezado y menú      8. Nosotros y contacto
+   4. Botones y colores      9. Animaciones de aparición
+   5. Portada (hero)        10. Celulares (responsive)
+   ===================================================== */
+
+/* ===== 1. Colores y base (cámbialos aquí) ===== */
+:root {
+    --fondo: #050a1a;
+    --azul: #1e6bff;
+    --neon: #00d4ff;
+    --violeta: #7a2cff;
+    --texto: #e6eeff;
+    --texto-suave: #aebbd3;
+    --vidrio: rgba(255, 255, 255, 0.05);
+    --borde-vidrio: rgba(120, 190, 255, 0.18);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--texto);
+    background: var(--fondo);
+    overflow-x: hidden;
+}
+
+section {
+    position: relative;
+    padding: 80px max(5%, calc((100% - 1180px) / 2));
+    text-align: center;
+}
+
+h2 {
+    margin: 0 0 20px;
+    font-size: clamp(28px, 4vw, 42px);
+    letter-spacing: -1px;
+    line-height: 1.15;
+}
+
+a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+    outline: 2px solid #8deeff;
+    outline-offset: 4px;
+}
+
+/* Etiqueta pequeña con punto brillante */
+.etiqueta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 10px;
+    color: #72e8ff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.6px;
+    text-transform: uppercase;
+}
+
+.etiqueta::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    border-radius: 50%;
+    background: var(--neon);
+    box-shadow: 0 0 12px var(--neon);
+}
+
+.etiqueta.centrada {
+    justify-content: center;
+}
+
+.neon {
+    color: var(--neon);
+    text-shadow: 0 0 20px var(--neon);
+}
+
+/* ===== 2. Fondo con luces que flotan ===== */
+.fondo-luces {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    /* Cuadrícula sutil para dar sensación de profundidad */
+    background-image:
+        linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+.orbe {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.5;
+    animation: orbitar 18s ease-in-out infinite;
+}
+
+.orbe-1 { width: 420px; height: 420px; top: -100px; left: -80px; background: #1240a8; }
+.orbe-2 { width: 360px; height: 360px; top: 40%;  right: -100px; background: #0a7fb0; animation-delay: -6s; }
+.orbe-3 { width: 300px; height: 300px; bottom: -80px; left: 30%; background: #4a1fa0; animation-delay: -12s; }
+
+@keyframes orbitar {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%      { transform: translate(60px, 40px) scale(1.1); }
+    66%      { transform: translate(-40px, 70px) scale(0.95); }
+}
+
+/* ===== 3. Encabezado y menú (efecto vidrio) ===== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    min-height: 72px;
+    padding: 12px max(5%, calc((100% - 1180px) / 2));
+    background: rgba(5, 10, 26, 0.6);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--borde-vidrio);
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+.logo::before {
+    content: "M";
+    display: grid;
+    place-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid rgba(0, 212, 255, 0.7);
+    border-radius: 11px;
+    color: var(--neon);
+    background: linear-gradient(145deg, rgba(30, 107, 255, 0.35), rgba(0, 212, 255, 0.08));
+    box-shadow: 0 0 18px rgba(0, 212, 255, 0.25);
+}
+
+.logo span {
+    color: var(--neon);
+    text-shadow: 0 0 12px var(--neon);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 26px;
+}
+
+nav a {
+    color: #c2cce2;
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+nav a:hover {
+    color: var(--neon);
+    text-shadow: 0 0 10px var(--neon);
+}
+
+nav a:last-child {
+    padding: 7px 15px;
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    border-radius: 30px;
+}
+
+/* ===== 4. Botones y selector de colores ===== */
+.boton {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 23px;
+    border: 1px solid rgba(0, 212, 255, 0.45);
+    border-radius: 30px;
+    background: linear-gradient(110deg, var(--azul), #00a9df);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 126, 255, 0.25);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.boton:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.12);
+    box-shadow: 0 10px 34px rgba(0, 212, 255, 0.45);
+}
+
+.boton-vidrio {
+    background: var(--vidrio);
+    border-color: var(--borde-vidrio);
+    backdrop-filter: blur(10px);
+    box-shadow: none;
+}
+
+.boton-whatsapp {
+    background: #25d366;
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+}
+
+/* Círculos de color. Cada botón recibe su color en la variable --c */
+.colores {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.color {
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    background: var(--c);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.color:hover {
+    transform: scale(1.2);
+}
+
+.color.activo {
+    border-color: #fff;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.5), 0 0 14px var(--c);
+}
+
+/* ===== 5. Portada (hero) ===== */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 35px;
+    min-height: min(760px, calc(100vh - 72px));
+    text-align: left;
+}
+
+.hero-texto {
+    max-width: 570px;
+}
+
+.hero h1 {
+    margin: 18px 0;
+    font-size: clamp(38px, 5.2vw, 66px);
+    line-height: 1.1;
+    letter-spacing: -2.5px;
+}
+
+/* Texto con degradado */
+.hero h1 .neon {
+    background: linear-gradient(100deg, #fff 0%, #75ddff 48%, #738aff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+}
+
+.hero-texto > p:not(.etiqueta) {
+    max-width: 480px;
+    margin-bottom: 28px;
+    color: var(--texto-suave);
+}
+
+.hero-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.datos {
+    display: flex;
+    gap: 34px;
+    margin-top: 40px;
+}
+
+.datos strong {
+    display: block;
+    font-size: 28px;
+    color: #fff;
+}
+
+.datos span {
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+/* Escena del celular grande */
+.escena {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: min(42vw, 450px);
+    min-width: 290px;
+    perspective: 1000px;
+}
+
+/* Anillo de luz detrás del celular */
+.escena::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    width: 380px;
+    max-width: 100%;
+    aspect-ratio: 1;
+    border: 1px solid rgba(0, 212, 255, 0.15);
+    border-radius: 50%;
+    box-shadow: 0 0 65px rgba(30, 107, 255, 0.25), inset 0 0 65px rgba(30, 107, 255, 0.15);
+    animation: pulso 4s ease-in-out infinite;
+}
+
+@keyframes pulso {
+    0%, 100% { transform: scale(1);    opacity: 0.8; }
+    50%      { transform: scale(1.06); opacity: 1; }
+}
+
+/* Este contenedor lo inclina el JavaScript con el ratón */
+.celular-giro {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease-out;
+}
+
+.celular {
+    --color-hero: #00d4ff;   /* lo cambia el selector de color */
+    position: relative;
+    width: 205px;
+    height: 410px;
+    border-radius: 36px;
+    background: linear-gradient(145deg, #394e78, #10172b 35%, #07101f);
+    border: 2px solid var(--color-hero);
+    box-shadow: 0 0 30px var(--color-hero), 0 30px 80px rgba(0, 0, 0, 0.6);
+    transform-style: preserve-3d;
+    animation: flotar 6s ease-in-out infinite;
+    transition: border-color 0.5s, box-shadow 0.5s;
+}
+
+.pantalla {
+    position: absolute;
+    inset: 11px;
+    border-radius: 27px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 90%, var(--color-hero), transparent 45%),
+        radial-gradient(ellipse at 25% 60%, var(--violeta), transparent 45%),
+        linear-gradient(160deg, #052067, #080d27 58%, #120d39);
+    transition: background 0.5s;
+}
+
+/* Reflejo de luz que cruza la pantalla */
+.pantalla::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.18) 50%, transparent 65%);
+    animation: reflejo 5s ease-in-out infinite;
+}
+
+@keyframes reflejo {
+    0%, 100% { transform: translateX(-120%); }
+    50%      { transform: translateX(120%); }
+}
+
+.notch {
+    width: 62px;
+    height: 16px;
+    margin: 9px auto;
+    border-radius: 10px;
+    background: #05091a;
+}
+
+.reloj {
+    position: relative;
+    margin-top: 80px;
+    text-align: center;
+    font-size: 46px;
+    font-weight: 300;
+    text-shadow: 0 0 15px white;
+}
+
+.fecha {
+    text-align: center;
+    font-size: 12px;
+    color: #cfe0ff;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0)     rotateY(-20deg) rotateX(6deg); }
+    50%      { transform: translateY(-25px) rotateY(20deg)  rotateX(-4deg); }
+}
+
+.selector-hero {
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 16px;
+    border: 1px solid var(--borde-vidrio);
+    border-radius: 30px;
+    background: var(--vidrio);
+    backdrop-filter: blur(12px);
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+/* Franja de marcas en movimiento */
+.marcas {
+    overflow: hidden;
+    padding: 18px 0;
+    border-top: 1px solid var(--borde-vidrio);
+    border-bottom: 1px solid var(--borde-vidrio);
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.marcas-pista {
+    display: flex;
+    gap: 70px;
+    width: max-content;
+    animation: desplazar 25s linear infinite;
+}
+
+.marcas-pista span {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(230, 238, 255, 0.35);
+}
+
+@keyframes desplazar {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+/* ===== 6. Catálogo y tarjetas ===== */
+.filtros {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.filtro {
+    padding: 8px 18px;
+    border: 1px solid var(--borde-vidrio);
+    border-radius: 30px;
+    background: var(--vidrio);
+    color: var(--texto-suave);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+.filtro:hover,
+.filtro.activo {
+    color: #fff;
+    border-color: var(--neon);
+    background: rgba(0, 212, 255, 0.15);
+    box-shadow: 0 0 18px rgba(0, 212, 255, 0.3);
+}
+
+.catalogo {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 26px;
+}
+
+.producto {
+    --brillo-x: 50%;
+    --brillo-y: 0%;
+    position: relative;
+    padding: 22px;
+    text-align: left;
+    border: 1px solid var(--borde-vidrio);
+    border-radius: 22px;
+    /* Vidrio + brillo que sigue al cursor (lo mueve el JavaScript) */
+    background:
+        radial-gradient(circle at var(--brillo-x) var(--brillo-y), rgba(0, 212, 255, 0.18), transparent 55%),
+        linear-gradient(145deg, rgba(23, 42, 83, 0.7), rgba(8, 14, 33, 0.85));
+    /* Sin backdrop-filter aquí: anularía la profundidad 3D (translateZ) de los elementos internos */
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.25), inset 0 1px rgba(255, 255, 255, 0.06);
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: transform 0.15s ease-out, box-shadow 0.3s, border-color 0.3s;
+}
+
+.producto:hover {
+    border-color: rgba(0, 212, 255, 0.6);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35), 0 0 30px rgba(0, 212, 255, 0.25);
+}
+
+.producto.oculto {
+    display: none;
+}
+
+.insignia {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #72e8ff;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+/* Celular pequeño de la tarjeta. Sale "hacia afuera" con translateZ (profundidad) */
+.mini-cel {
+    --color-cel: #1c1f26;
+    width: 78px;
+    height: 150px;
+    margin: 18px auto;
+    padding: 5px;
+    border-radius: 16px;
+    background: var(--color-cel);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15), 0 18px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(0, 212, 255, 0.25);
+    transform: translateZ(45px);
+    transition: background 0.4s;
+}
+
+.mini-pantalla {
+    height: 100%;
+    border-radius: 12px;
+    background:
+        radial-gradient(ellipse at 50% 90%, rgba(0, 212, 255, 0.8), transparent 50%),
+        linear-gradient(160deg, #0b2a6b, #080d27 60%, #2a0d55);
+}
+
+.producto h3 {
+    margin: 4px 0 2px;
+    color: #f5f8ff;
+    font-size: 19px;
+    transform: translateZ(25px);
+}
+
+.producto p {
+    margin: 4px 0 12px;
+    color: var(--texto-suave);
+    font-size: 13px;
+}
+
+.producto .color-elegido {
+    margin-bottom: 8px;
+}
+
+.precio,
+.producto .precio {
+    margin: 14px 0;
+    color: #fff;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.precio small {
+    color: #9eb1d2;
+    font-size: 11px;
+}
+
+.producto .boton {
+    padding: 9px 16px;
+    font-size: 13px;
+    transform: translateZ(20px);
+}
+
+.nota-precios {
+    margin: 30px auto 0;
+    color: #8797b5;
+    font-size: 12px;
+}
+
+/* ===== 7. Visor 360° ===== */
+.visor-caja {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 30px;
+    padding: 30px;
+    border: 1px solid var(--borde-vidrio);
+    border-radius: 28px;
+    background: var(--vidrio);
+    backdrop-filter: blur(14px);
+}
+
+.visor {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 340px;
+    max-width: 100%;
+    height: 460px;
+    perspective: 1100px;
+    cursor: grab;
+    touch-action: pan-y;   /* en celular: arrastrar a los lados gira, arriba/abajo hace scroll */
+    user-select: none;
+}
+
+.visor.agarrado {
+    cursor: grabbing;
+}
+
+/* El modelo es una "caja" 3D de 180 x 360 x 20 px */
+.modelo3d {
+    --color-cuerpo: #1c1f26;   /* lo cambia el selector de color */
+    position: relative;
+    width: 180px;
+    height: 360px;
+    transform-style: preserve-3d;
+}
+
+.cara {
+    position: absolute;
+    background: var(--color-cuerpo);
+    backface-visibility: hidden;   /* cada cara solo se ve de frente */
+    transition: background 0.4s;
+}
+
+.frente,
+.atras {
+    inset: 0;
+    border-radius: 30px;
+}
+
+.frente {
+    padding: 8px;
+    transform: translateZ(10px);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.12);
+}
+
+.pantalla-3d {
+    height: 100%;
+    border-radius: 23px;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at 50% 90%, rgba(0, 212, 255, 0.9), transparent 45%),
+        radial-gradient(ellipse at 25% 60%, var(--violeta), transparent 45%),
+        linear-gradient(160deg, #052067, #080d27 58%, #120d39);
+}
+
+.pantalla-3d .reloj {
+    margin-top: 70px;
+    font-size: 40px;
+}
+
+.atras {
+    transform: rotateY(180deg) translateZ(10px);
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.25), transparent 40%, rgba(0, 0, 0, 0.3)),
+        var(--color-cuerpo);
+    box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.12);
+}
+
+/* Cámaras traseras: por defecto en columna (estilo Samsung) */
+.camaras {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.camaras i {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #3a6fd8 0 20%, #0a0d14 25% 60%, #3b3f48 65%);
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.15);
+}
+
+/* iPhone y Xiaomi: módulo cuadrado */
+.marca-iphone .camaras,
+.marca-xiaomi .camaras {
+    display: grid;
+    grid-template-columns: repeat(2, 28px);
+    padding: 10px;
+    border-radius: 22px;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.marca-xiaomi .camaras {
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+}
+
+/* Motorola: módulo redondeado en columna */
+.marca-motorola .camaras {
+    padding: 8px;
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.marca-atras {
+    position: absolute;
+    bottom: 40px;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+}
+
+/* Bordes del celular (le dan grosor) */
+.lado {
+    top: 30px;
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 300px;
+    filter: brightness(0.7);
+}
+
+.lado-izq { transform: rotateY(-90deg) translateZ(90px); }
+.lado-der { transform: rotateY(90deg)  translateZ(90px); }
+
+.tapa {
+    top: calc(50% - 10px);
+    left: 30px;
+    width: 120px;
+    height: 20px;
+    filter: brightness(0.6);
+}
+
+.tapa-arriba { transform: rotateX(90deg)  translateZ(180px); }
+.tapa-abajo  { transform: rotateX(-90deg) translateZ(180px); }
+
+.sombra-piso {
+    position: absolute;
+    bottom: 10px;
+    width: 160px;
+    height: 20px;
+    border-radius: 50%;
+    background: radial-gradient(rgba(0, 212, 255, 0.45), transparent 70%);
+    filter: blur(6px);
+}
+
+.visor-panel {
+    width: 320px;
+    max-width: 100%;
+    text-align: left;
+}
+
+.visor-panel h3 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.campo {
+    display: block;
+    margin: 18px 0 8px;
+    font-size: 13px;
+    color: var(--texto-suave);
+}
+
+.visor-panel select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--borde-vidrio);
+    border-radius: 12px;
+    background: #0b1530;
+    color: var(--texto);
+    font: inherit;
+}
+
+.visor-panel input[type="range"] {
+    width: 100%;
+    accent-color: var(--neon);
+}
+
+.visor-botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.ayuda {
+    margin-top: 14px;
+    font-size: 12px;
+    color: #8797b5;
+}
+
+/* ===== 8. Nosotros y contacto ===== */
+.nosotros > p {
+    max-width: 620px;
+    margin: 0 auto;
+    color: var(--texto-suave);
+}
+
+.beneficios {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.beneficio {
+    padding: 26px 20px;
+    border: 1px solid var(--borde-vidrio);
+    border-radius: 20px;
+    background: var(--vidrio);
+    backdrop-filter: blur(10px);
+}
+
+.beneficio span {
+    font-size: 30px;
+}
+
+.beneficio h3 {
+    margin: 10px 0 4px;
+}
+
+.beneficio p {
+    margin: 0;
+    color: var(--texto-suave);
+    font-size: 14px;
+}
+
+.contacto p {
+    color: var(--texto-suave);
+    margin-bottom: 26px;
+}
+
+footer {
+    padding: 22px;
+    text-align: center;
+    font-size: 13px;
+    color: #9eacc7;
+    border-top: 1px solid var(--borde-vidrio);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* Botón flotante de WhatsApp */
+.whatsapp {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    background: #25d366;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+    animation: latido 2.5s ease-in-out infinite;
+    transition: transform 0.3s;
+}
+
+.whatsapp:hover {
+    transform: scale(1.1);
+    animation: none;
+}
+
+@keyframes latido {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+    50%      { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+}
+
+/* ===== 9. Aparecer suavemente (lo activa el JavaScript) ===== */
+.aparecer {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.aparecer.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Cuando la tarjeta ya apareció, la inclinación 3D responde rápido */
+.producto.visible {
+    transition: opacity 0.8s ease, transform 0.15s ease-out, box-shadow 0.3s, border-color 0.3s;
+}
+
+/* ===== 10. Celulares (pantallas pequeñas) ===== */
+@media (max-width: 700px) {
+    header {
+        padding: 10px 5%;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    nav {
+        justify-content: center;
+        gap: 6px 14px;
+        width: 100%;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    nav a:last-child {
+        padding: 3px 9px;
+    }
+
+    section {
+        padding: 55px 5%;
+    }
+
+    .hero {
+        justify-content: center;
+        min-height: auto;
+        padding-top: 45px;
+        text-align: center;
+    }
+
+    .hero-texto {
+        text-align: center;
+    }
+
+    .hero .etiqueta,
+    .hero-botones,
+    .datos {
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: clamp(34px, 10vw, 50px);
+        letter-spacing: -1.5px;
+    }
+
+    .hero-texto > p:not(.etiqueta) {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .datos {
+        gap: 20px;
+    }
+
+    .escena {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .escena::before {
+        width: 300px;
+    }
+
+    .celular {
+        width: 170px;
+        height: 340px;
+    }
+
+    .reloj {
+        margin-top: 65px;
+        font-size: 38px;
+    }
+
+    .visor-caja {
+        padding: 20px 14px;
+    }
+
+    .visor {
+        height: 420px;
+    }
+
+    .whatsapp {
+        right: 14px;
+        bottom: 14px;
+        padding: 12px 17px;
+    }
+}
+
+/* Si la persona tiene activado "reducir movimiento" en su sistema */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .aparecer {
+        opacity: 1;
+        transform: none;
+    }
+}

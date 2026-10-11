@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050a1a">
+    <meta name="description" content="Encuentra celulares Samsung, iPhone, Motorola y Xiaomi en Mundo Celular. Tecnología del futuro a tu alcance.">
+    <title>Mundo Celular | Tecnología del futuro</title>
+    <!-- Conexión con el archivo de estilos (debe estar en la misma carpeta) -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <!-- Luces de fondo que flotan detrás de todo (solo decoración) -->
+    <div class="fondo-luces" aria-hidden="true">
+        <span class="orbe orbe-1"></span>
+        <span class="orbe orbe-2"></span>
+        <span class="orbe orbe-3"></span>
+    </div>
+
+    <!-- ENCABEZADO + MENÚ -->
+    <header>
+        <a href="#inicio" class="logo">Mundo<span>Celular</span></a>
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#productos">Celulares</a>
+            <a href="#visor">Vista 360°</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- ===== PORTADA ===== -->
+    <section id="inicio" class="hero">
+        <div class="hero-texto aparecer">
+            <p class="etiqueta">Tecnología del futuro</p>
+            <h1>Tu próximo celular <br>está en <span class="neon">Mundo Celular</span></h1>
+            <p>Los mejores smartphones de Samsung, iPhone, Motorola y Xiaomi al mejor precio.</p>
+            <div class="hero-botones">
+                <a class="boton" href="#productos">Ver celulares <span aria-hidden="true">→</span></a>
+                <a class="boton boton-vidrio" href="#visor">Girar en 360°</a>
+            </div>
+
+            <!-- Datos rápidos -->
+            <div class="datos">
+                <div><strong>8+</strong><span>Modelos</span></div>
+                <div><strong>4</strong><span>Marcas</span></div>
+                <div><strong>12</strong><span>Meses de garantía</span></div>
+            </div>
+        </div>
+
+        <!-- Celular 3D hecho solo con CSS. Mueve el ratón sobre la portada para inclinarlo. -->
+        <div class="escena">
+            <div class="celular-giro" id="celularGiro">
+                <div class="celular">
+                    <div class="pantalla">
+                        <div class="notch"></div>
+                        <div class="reloj">9:41</div>
+                        <div class="fecha">sábado, 10 de octubre</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Selector de color del celular de la portada -->
+            <div class="selector-hero">
+                <span id="nombreColorHero">Azul neón</span>
+                <div class="colores" id="coloresHero">
+                    <button class="color activo" style="--c: #00d4ff" data-nombre="Azul neón" aria-label="Azul neón"></button>
+                    <button class="color" style="--c: #a855ff" data-nombre="Violeta" aria-label="Violeta"></button>
+                    <button class="color" style="--c: #ff4fa3" data-nombre="Rosa" aria-label="Rosa"></button>
+                    <button class="color" style="--c: #d9e2f2" data-nombre="Plata" aria-label="Plata"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Franja de marcas que se desplaza sola -->
+    <div class="marcas" aria-label="Marcas disponibles">
+        <div class="marcas-pista">
+            <span>Samsung</span><span>iPhone</span><span>Motorola</span><span>Xiaomi</span>
+            <span>Samsung</span><span>iPhone</span><span>Motorola</span><span>Xiaomi</span>
+            <span aria-hidden="true">Samsung</span><span aria-hidden="true">iPhone</span><span aria-hidden="true">Motorola</span><span aria-hidden="true">Xiaomi</span>
+            <span aria-hidden="true">Samsung</span><span aria-hidden="true">iPhone</span><span aria-hidden="true">Motorola</span><span aria-hidden="true">Xiaomi</span>
+        </div>
+    </div>
+
+    <!-- ===== CATÁLOGO ===== -->
+    <section id="productos">
+        <p class="etiqueta centrada aparecer">Catálogo</p>
+        <h2 class="aparecer">Nuestros celulares</h2>
+
+        <!-- Botones para filtrar por marca -->
+        <div class="filtros aparecer" id="filtros">
+            <button class="filtro activo" data-marca="todas">Todas</button>
+            <button class="filtro" data-marca="Samsung">Samsung</button>
+            <button class="filtro" data-marca="iPhone">iPhone</button>
+            <button class="filtro" data-marca="Motorola">Motorola</button>
+            <button class="filtro" data-marca="Xiaomi">Xiaomi</button>
+        </div>
+
+        <!-- Las tarjetas se crean desde script.js (lista "celulares") -->
+        <div class="catalogo" id="catalogo"></div>
+
+        <p class="nota-precios">Precios de referencia en pesos colombianos. Confirma disponibilidad y precio final por WhatsApp.</p>
+    </section>
+
+    <!-- ===== VISOR 360° ===== -->
+    <section id="visor" class="visor-seccion">
+        <p class="etiqueta centrada aparecer">Explora en 360°</p>
+        <h2 class="aparecer">Gira el celular como si lo tuvieras en la mano</h2>
+
+        <div class="visor-caja aparecer">
+            <!-- Escenario 3D: arrastra con el ratón o el dedo -->
+            <div class="visor" id="visor3d" aria-label="Arrastra para girar el celular">
+                <div class="modelo3d" id="modelo3d">
+                    <div class="cara frente">
+                        <div class="pantalla-3d">
+                            <div class="notch"></div>
+                            <div class="reloj">9:41</div>
+                        </div>
+                    </div>
+                    <div class="cara atras">
+                        <div class="camaras"><i></i><i></i><i></i></div>
+                        <span class="marca-atras" id="marcaAtras">Samsung</span>
+                    </div>
+                    <div class="cara lado lado-izq"></div>
+                    <div class="cara lado lado-der"></div>
+                    <div class="cara tapa tapa-arriba"></div>
+                    <div class="cara tapa tapa-abajo"></div>
+                </div>
+                <div class="sombra-piso"></div>
+            </div>
+
+            <!-- Panel de control del visor -->
+            <div class="visor-panel">
+                <h3 id="visorNombre">Samsung Galaxy S24</h3>
+                <p class="precio" id="visorPrecio">$3.499.000 <small>COP</small></p>
+
+                <label class="campo" for="visorModelo">Modelo</label>
+                <select id="visorModelo"></select>
+
+                <span class="campo">Color: <strong id="visorColorNombre"></strong></span>
+                <div class="colores" id="visorColores"></div>
+
+                <label class="campo" for="giro">Ángulo: <strong id="giroValor">0°</strong></label>
+                <input type="range" id="giro" min="0" max="360" value="0">
+
+                <div class="visor-botones">
+                    <button class="boton boton-vidrio" id="botonAuto">▶ Girar solo</button>
+                    <a class="boton" id="visorWhatsapp" href="#" target="_blank" rel="noopener noreferrer">Consultar ↗</a>
+                </div>
+                <p class="ayuda">Consejo: arrastra el celular con el ratón o con el dedo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== NOSOTROS ===== -->
+    <section id="nosotros" class="nosotros">
+        <p class="etiqueta centrada aparecer">Más que una tienda</p>
+        <h2 class="aparecer">Tecnología que te conecta</h2>
+        <p class="aparecer">Te ayudamos a encontrar el celular ideal para tu día a día, con marcas que conoces y tecnología para ir más lejos.</p>
+
+        <div class="beneficios">
+            <div class="beneficio aparecer"><span>🛡️</span><h3>Garantía</h3><p>12 meses en todos los equipos.</p></div>
+            <div class="beneficio aparecer"><span>🚚</span><h3>Envíos</h3><p>A toda Colombia.</p></div>
+            <div class="beneficio aparecer"><span>💬</span><h3>Asesoría</h3><p>Te ayudamos a elegir por WhatsApp.</p></div>
+            <div class="beneficio aparecer"><span>💳</span><h3>Pagos</h3><p>Efectivo, transferencia y tarjeta.</p></div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACTO ===== -->
+    <section id="contacto" class="contacto aparecer">
+        <h2>¿Dudas? Escríbenos</h2>
+        <p>Te respondemos en minutos por WhatsApp.</p>
+        <a class="boton boton-whatsapp enlace-whatsapp" href="https://wa.me/?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20un%20celular"
+           target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Mundo Celular. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Botón flotante de WhatsApp. El número se configura en script.js (NUMERO_WHATSAPP). -->
+    <a class="whatsapp enlace-whatsapp" href="https://wa.me/?text=Hola%2C%20quiero%20informaci%C3%B3n%20de%20un%20celular"
+       target="_blank" rel="noopener noreferrer" aria-label="Escríbenos por WhatsApp">◉ WhatsApp</a>
+
+    <!-- Toda la interactividad está en script.js (misma carpeta) -->
+    <script src="script.js"></script>
+</body>
+</html>
